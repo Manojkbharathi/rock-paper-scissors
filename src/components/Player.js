@@ -1,11 +1,23 @@
 import React from 'react';
 import { GiRock } from 'react-icons/gi';
 import { FaHandPaper, FaHandScissors } from 'react-icons/fa';
-const Player = () => {
+
+const Player = ({ name = 'player', score = 0, selectedIcon }) => {
+  let iconComponent = null;
+
+  if (selectedIcon === 'rock') {
+    iconComponent = <GiRock size={80} />;
+  } else if (selectedIcon === 'paper') {
+    iconComponent = <FaHandPaper size={80} />;
+  } else if (selectedIcon === 'scissors') {
+    iconComponent = <FaHandScissors size={80} />;
+  }
   return (
     <div className='player'>
-      <h3>Player:0</h3>
-      selectedIcon()
+      <div>
+        {name}: {score}
+      </div>
+      <div>{iconComponent}</div>
     </div>
   );
 };
